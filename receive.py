@@ -9,7 +9,7 @@ channel = conn.channel()
 channel.queue_declare(queue='first queue')
 
 def callback(ch, method, properties, body):
-    print ("[x] Recieved %r" % body)
+    print ("[x] Received %r" % body)
 
 print '[*] Waiting for messages'
 

@@ -18,6 +18,7 @@ def callback(ch, method, properties, body):
 
 print '[*] Waiting for messages'
 
+chanell.basic_qos(prefetch_count=1)
 channel.basic_consume(callback, queue='task_queue')
 
 channel.start_consuming()

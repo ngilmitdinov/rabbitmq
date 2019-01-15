@@ -14,10 +14,11 @@ def callback(ch, method, properties, body):
     print ("[x] Received %r" % body)
     time.sleep(body.count(b'.'))
     print(" [x] Done")
+    ch.basic_ack(delivery_tag = method.delivery_tag)
 
 print '[*] Waiting for messages'
 
-channel.basic_consume(callback, queue='first queue', no_ack=True)
+channel.basic_consume(callback, queue='first queue')
 
 channel.start_consuming()
 

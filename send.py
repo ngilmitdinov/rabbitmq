@@ -6,11 +6,11 @@ conn = pika.BlockingConnection(pika.ConnectionParameters('localhost'))
 
 channel = conn.channel()
 
-channel.queue_declare(queue='first queue')
+channel.queue_declare(queue='task_queue', durable=True)
 
 message = ' '.join(sys.argv[1:]) or "Hello world"
 
-channel.basic_publish(exchange='', routing_key='first queue', body=message)
+channel.basic_publish(exchange='', routing_key='task_queue', body=message)
 
 print ("[x] Sent  %r" % message)
 

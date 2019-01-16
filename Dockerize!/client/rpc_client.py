@@ -7,7 +7,7 @@ import sys
 class FibonacciRpcClient(object):
     def __init__(self):
         self.connection = pika.BlockingConnection(pika.ConnectionParameters(
-                host='localhost'))
+                host='172.17.0.2'))
 
         self.channel = self.connection.channel()
 
@@ -36,7 +36,7 @@ class FibonacciRpcClient(object):
         return int(self.response)
 
 fibonacci_rpc = FibonacciRpcClient()
-message = ' '.join(sys.argv[1:]) or "Hello world"
+message = ' '.join(sys.argv[1:]) or "30"
 print " [x] Requesting fib(", message, ")"
 response = fibonacci_rpc.call(message)
 print " [.] Got %r" % (response,)

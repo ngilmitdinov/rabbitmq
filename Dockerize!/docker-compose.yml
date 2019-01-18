@@ -8,8 +8,9 @@ services:
   build: ./server
   depends_on:
     - "broker"
+  command: ["./wait-for-it.sh", "broker"]
  client:
   build: ./client
   depends_on:
     - "broker"
-  command: ["./wait-for-it.sh", "broker:5672"]
+  command: ["./wait-for-it.sh", "broker"]

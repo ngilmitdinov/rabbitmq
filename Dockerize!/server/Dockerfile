@@ -7,4 +7,4 @@ RUN pip install pika
 COPY rpc_server.py /
 COPY entrypoint.sh /
 
-CMD ["/entrypoint.sh"]
+ENTRYPOINT ["/entrypoint.sh"]

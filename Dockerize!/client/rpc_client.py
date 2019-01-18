@@ -7,7 +7,7 @@ import sys
 class FibonacciRpcClient(object):
     def __init__(self):
         self.connection = pika.BlockingConnection(pika.ConnectionParameters(
-                host='172.17.0.2'))
+                host='172.21.0.2'))
 
         self.channel = self.connection.channel()
 

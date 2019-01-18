@@ -1,0 +1,15 @@
+version: "2"
+services: 
+ broker:
+  image: rabbitmq
+  ports:
+    - "5672:5672"
+ server: 
+  build: ./server
+  depends_on:
+    - "broker"
+ client:
+  build: ./client
+  depends_on:
+    - "broker"
+  command: ["./wait-for-it.sh", "broker:5672"]

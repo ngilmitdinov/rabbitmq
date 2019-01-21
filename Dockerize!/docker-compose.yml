@@ -1,16 +1,25 @@
-version: "2"
+version: "2.1"
+
 services: 
+
  broker:
-  image: rabbitmq
+  build: ./broker
   ports:
     - "5672:5672"
- server: 
+  healthcheck:
+    test: ["CMD", "./healthcheck.sh"]
+    interval: 15s
+    timeout: 5s
+    retries: 5
+
+ server:
   build: ./server
   depends_on:
-    - "broker"
-  command: ["./wait-for-it.sh", "broker"]
+    broker:
+      condition: service_healthy
+  
  client:
   build: ./client
   depends_on:
-    - "broker"
-  command: ["./wait-for-it.sh", "broker"]
+    broker:
+      condition: service_healthy

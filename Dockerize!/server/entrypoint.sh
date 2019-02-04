@@ -1,2 +1,2 @@
 #!/bin/bash
-python rpc_server.py
+python -u rpc_server.py

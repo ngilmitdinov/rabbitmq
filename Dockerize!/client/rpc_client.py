@@ -3,6 +3,9 @@
 import pika
 import uuid
 import sys
+import time
+
+count=1
 
 class FibonacciRpcClient(object):
     def __init__(self):
@@ -36,7 +39,11 @@ class FibonacciRpcClient(object):
         return int(self.response)
 
 fibonacci_rpc = FibonacciRpcClient()
-message = ' '.join(sys.argv[1:]) or "30"
-print " [x] Requesting fib(", message, ")"
-response = fibonacci_rpc.call(message)
-print " [.] Got %r" % (response,)
+
+while True:
+    message = count
+    print " [x] Requesting fib(", message, ")"
+    response = fibonacci_rpc.call(message)
+    print " [.] Got %r" % (response,)
+    count += 1
+    time.sleep(5)

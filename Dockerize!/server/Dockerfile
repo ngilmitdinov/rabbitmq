@@ -6,6 +6,5 @@ RUN pip install pika
 
 COPY rpc_server.py /
 COPY entrypoint.sh /
-COPY wait-for-it.sh /
 
 ENTRYPOINT ["/entrypoint.sh"]

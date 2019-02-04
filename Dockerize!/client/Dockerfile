@@ -5,5 +5,4 @@ RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && python get-pip.py
 RUN pip install pika
 COPY entrypoint.sh /
 COPY rpc_client.py /
-COPY wait-for-it.sh /
 ENTRYPOINT ["/entrypoint.sh"]

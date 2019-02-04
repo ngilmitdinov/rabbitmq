@@ -2,7 +2,7 @@ exercises from https://www.rabbitmq.com/getstarted.html
 
 
 
-##Основной проект в папке Dockerize!. 
+## Основной проект в папке Dockerize!. 
 
 Запускаются три контейнера: 
 + server - считает числа Фиббоначи по полученному номеру.
